@@ -43,3 +43,4 @@ C:\Users\mccartym\Desktop\api_mqtt\Op20_Mqtt_API\obj\Debug\net10.0\refint\Op20_M
 C:\Users\mccartym\Desktop\api_mqtt\Op20_Mqtt_API\obj\Debug\net10.0\Op20_Mqtt_API.pdb
 C:\Users\mccartym\Desktop\api_mqtt\Op20_Mqtt_API\obj\Debug\net10.0\Op20_Mqtt_API.genruntimeconfig.cache
 C:\Users\mccartym\Desktop\api_mqtt\Op20_Mqtt_API\obj\Debug\net10.0\ref\Op20_Mqtt_API.dll
+C:\Users\mccartym\Desktop\api_mqtt\Op20_Mqtt_API\obj\Debug\net10.0\Op20_Mqtt_API.sourcelink.json

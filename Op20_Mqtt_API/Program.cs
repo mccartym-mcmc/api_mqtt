@@ -12,7 +12,7 @@ builder.Services.AddHostedService<MqttClientService>();
 builder.Services.AddSingleton<MqttClientService>();
 builder.Services.AddSingleton<IMqttClientService>(sp =>
     sp.GetRequiredService<MqttClientService>());
-// Important: make the hosted service use the SAME singleton instance
+// Important: make the hosted service use the SAME singleton instance`
 builder.Services.AddHostedService(sp =>
     sp.GetRequiredService<MqttClientService>());
 
@@ -26,6 +26,10 @@ builder.Services.AddOpenApiDocument(config =>
 });
 
 var app = builder.Build();
+
+// Retrieve the singleton service instance directly and call a method
+var singletonService = app.Services.GetRequiredService<IMqttClientService>();
+singletonService.SetServerAddress("172.16.1.32");
 
 if(app.Environment.IsDevelopment())
 {

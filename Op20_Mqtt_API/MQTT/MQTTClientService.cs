@@ -7,11 +7,14 @@ public interface IMqttClientService
 {
     Task PublishOnce(string topic, object value);
     Op20 GetOp20();
+
+    void SetServerAddress(string address);
 }
 public class MqttClientService : BackgroundService, IMqttClientService
 {
     private IMqttClient client;
     private Op20 op20;
+    private string ServerAddress {get;set;} = "127.0.0.1";
     //private MqttClientOptionsBuilder mqttClientOptions;
 
     
@@ -22,10 +25,11 @@ public class MqttClientService : BackgroundService, IMqttClientService
         var mqttFactory = new MqttClientFactory();
         client = mqttFactory.CreateMqttClient();
         var options = new MqttClientOptionsBuilder()
-            .WithTcpServer("127.0.0.1", 1883)
+            .WithTcpServer(ServerAddress, 1883)
             .WithClientId("ClientserviceTest")
             .Build();
     
+        Console.WriteLine("Server addr: " + ServerAddress);
         //set up subscription event handler
         client.ApplicationMessageReceivedAsync += HandleMessageAsync;
 
@@ -91,5 +95,10 @@ public class MqttClientService : BackgroundService, IMqttClientService
             throw new InvalidOperationException("MQTT client is not connected yet.");
         
         return op20;
+    }
+
+    public void SetServerAddress(string address)
+    {
+        ServerAddress = address;
     }
 }
